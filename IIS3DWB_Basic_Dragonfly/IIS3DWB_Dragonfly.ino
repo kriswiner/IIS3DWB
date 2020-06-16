@@ -63,7 +63,7 @@ uint8_t Ascale = AFS_4G;
 
 float aRes;                              // scale resolutions per LSB for the accel 
 float accelBias[3] = {0.0f, 0.0f, 0.0f}; // offset biases for the accel 
-int16_t IIS3DWBData[4];                  // Stores the 16-bit signed sensor output
+int16_t IIS3DWBData[4] = {0};                  // Stores the 16-bit signed sensor output
 float ax, ay, az, accelTemp;             // variables to hold latest accel data values 
 uint8_t IIS3DWBstatus;
 
@@ -113,7 +113,7 @@ void setup()
   Serial.print("IIS3DWB "); Serial.print("I AM "); Serial.print(c, HEX); Serial.print(" I should be "); Serial.println(0x7B, HEX);
   Serial.println(" ");
 
-  if(c == 0x7B) // check if all I2C sensors have acknowledged
+  if(c == 0x7B) // check if all SPI sensors have acknowledged
   {
    Serial.println("IIS3DWB is online...");  
    Serial.println(" ");
@@ -154,7 +154,6 @@ void setup()
   attachInterrupt(IIS3DWB_intPin1, myinthandler1, RISING);   // define interrupt for intPin1 output of IIS3DWB
   attachInterrupt(IIS3DWB_intPin2, myinthandler2, FALLING);  // define interrupt for intPin2 output of IIS3DWB
 }
-
 /* End of setup */
 
 void loop() {
