@@ -134,8 +134,8 @@ void IIS3DWB::init(uint8_t Ascale)
   writeByte(IIS3DWB_CTRL1_XL, 0xA0 | Ascale << 2); // set accel full scale and enable accel
 
   // activity interrupt handling
-  writeByte(IIS3DWB_WAKE_UP_DUR, 0x08);        // set inactivity duration at 512/26.667 kHz ODR (so about 5 seconds)
-  writeByte(IIS3DWB_WAKE_UP_THS, 0x02);        // set wake threshold to 62.5 mg
+  writeByte(IIS3DWB_WAKE_UP_DUR, 0x08);        // set inactivity duration at 1 LSB = 512/26.667 kHz ODR (so about 0.15 seconds)
+  writeByte(IIS3DWB_WAKE_UP_THS, 0x02);        // set wake threshold to 62.5 mg at 4 G FS, so 4G/2^6 = 0.0625 G
   // (change SLOPE_EN to 0x00 to drive activity change to INT)
   writeByte(IIS3DWB_SLOPE_EN, 0x20);           // drive activity status to interrupt      
   writeByte(IIS3DWB_INTERRUPTS_EN, 0x80);      // enable wakeup and activity/inactivity logic
