@@ -14,7 +14,7 @@ The flat frequency range is ~50 Hz to 6300 Hz (maximum bandwidth) with a 26660 H
  
 The sketch is intended to be run on a [Dragonfly](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) development board. The sensor uses the SPI interface for full functionality and fast data transfer. Maximum SPI clock is 10 MHz, which the Dragonfly can support at its 80 MHz CPU clock speed.
 
-The basic sketch shows how to configure the sensor, including setting up a data ready interrupt on INT1 and an activity reognition (i.e., wakeup) interrupt on INT2, how to read the data, how to power down and power up the sensor, etc.
+The basic sketch shows how to configure the sensor, including setting up a data ready interrupt on INT1 and an activity recognition (i.e., wakeup) interrupt on INT2, how to read the data, how to power down and power up the sensor, etc.
 
 Additional sketches will show how to set up the FIFO, collect accel data in the FIFO, set up the FIFO watermark and FIFO-full (watermark) interrupt, and then batch read the FIFO into a buffer for further processing on the host. Further processing includes FFT and power spectrum peak identification, etc.
 
