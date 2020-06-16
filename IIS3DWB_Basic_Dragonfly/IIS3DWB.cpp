@@ -106,14 +106,14 @@ void IIS3DWB::reset()
 
 uint8_t IIS3DWB::DRstatus()
 {
-  uint8_t temp = readByte(IIS3DWB_STATUS_REG); // read status register
+  uint8_t temp = readByte(IIS3DWB_STATUS_REG); // read data ready status register
   return temp;
 }
 
 
 uint8_t IIS3DWB::ACTstatus()
 {
-  uint8_t temp = readByte(IIS3DWB_ALL_INT_SRC); // read status register
+  uint8_t temp = readByte(IIS3DWB_ALL_INT_SRC); // read activity status register
   return temp;
 }
 
