@@ -30,7 +30,7 @@
  * of operating over an extended temperature range (up to +105 °C), make the device particularly suitable for vibration 
  * monitoring in industrial applications.
  * 
- * Uses the SPI inmterface for fast data transfer.
+ * Uses the SPI interface for fast data transfer.
  * 
  * Intended to be run on a Dragonfly development board:
  * 
