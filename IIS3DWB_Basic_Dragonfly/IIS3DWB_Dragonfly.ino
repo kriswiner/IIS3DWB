@@ -59,7 +59,7 @@ const char        *build_time = __TIME__;   // 8 characters HH:MM:SS
 /* Specify sensor parameters (sample rate is same as the bandwidth 6.3 kHz by default)
  * choices are:  AFS_2G, AFS_4G, AFS_8G, AFS_16G  
 */ 
-uint8_t Ascale = AFS_2G;
+uint8_t Ascale = AFS_4G;
 
 float aRes;                              // scale resolutions per LSB for the accel 
 float accelBias[3] = {0.0f, 0.0f, 0.0f}; // offset biases for the accel 
