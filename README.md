@@ -22,7 +22,7 @@ The SPI read of the 512 data samples from the FIFO takes about 13.1 ms and the f
 
 *Edit1:* with some optimization, rearrangement, and use of internal SPI transfer functionality in the readFIFOData function call the SPI full (512 data samples) FIFO buffer read time was reduced to ~4.2 ms. So maximum total time for FIFO read and fft is ~5 ms out of a IIS3DWB timing budget of 19.2 ms, which is a very nice place to be with lots of headroom to use for other sensors or MCU sleep.  
 
-*Edit2:* Added some improvements to the main sketch (sqrt --> sqrtf and fifo_count = 0 test), but now we are reading the entire FIFO in one operation and subsequently constructing the data bytes rather than doing this all sequentially. FIFO buffer read time reduced further to ~3.1 ms. Theoretical read time should be (512 samples x 7 bytes/sample x 8 bits/byte)/10 MHz = 2.87 ms so we are at above 93% efficiency with > 15 ms of headroom.
+*Edit2:* Added some improvements to the main sketch (sqrt --> sqrtf and fifo_count = 0 test), but now we are reading the entire FIFO in one operation and subsequently constructing the data bytes rather than doing this all sequentially. FIFO buffer read time reduced further to ~3.1 ms. Theoretical read time should be (512 samples x 7 bytes/sample x 8 bits/byte)/10 MHz = 2.87 ms so we are above 93% efficiency with > 15 ms of headroom.
 
 Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
