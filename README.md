@@ -16,8 +16,18 @@ The sketch is intended to be run on a [Dragonfly](https://www.tindie.com/product
 
 The basic sketch shows how to configure the sensor, including setting up a data ready interrupt on INT1 and an activity recognition (i.e., wakeup) interrupt on INT2, how to read the data, how to power down and power up the sensor, etc.
 
-Additional sketches will show how to set up the FIFO, collect accel data in the FIFO, set up the FIFO watermark and FIFO-full (watermark) interrupt, and then batch read the FIFO into a buffer for further processing on the host. Further processing includes FFT and power spectrum peak identification, etc.
+Second sketch shows how to set up the FIFO, collect accel data in the FIFO, set up the FIFO watermark and FIFO-full (watermark) interrupt, and then batch read the FIFO into a buffer for further processing on the host. Further processing includes FFT and power spectrum peak identification, etc.
+
+The SPI read of the 512 data samples from the FIFO takes about 13.1 ms and the fft for the full 512 data sample FIFO takes about 800 us at 80 MHz STM32L4 clock speed. The FIFO interframe time is ~20 ms (512 data samples/26667 Hz ~ 19.2 ms), so this is a rather longer read/processing time than we would like but still works. The SPI FIFO read time dominates here, and on the latest L4 core this time is reduced to ~8.6 ms through a number of improvements in the system layer.
+
+Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
 Breakout board [design](https://oshpark.com/shared_projects/KyNfc7rT) is open source in the shared space at OSH Park.
+
+FFT analysis code modifications from CMSIS library were done by Greg Tomasch.
+
+L4 system layer and Arduino core designed by Thomas Roell.
+
+Copyright for this work is owned by Tlera Corporation (2020) for use by anyone with proper attribution.
  
 
