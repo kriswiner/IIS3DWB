@@ -278,7 +278,7 @@ int16_t IIS3DWB::readTempData()
   return temp;
 }
 
-
+/*
 void IIS3DWB::readFIFOData(uint16_t fifo_count, int16_t * dest0, int16_t * dest1, int16_t * dest2)
 {
   uint8_t rawData[7];  // x/y/z accel register data stored here
@@ -289,6 +289,27 @@ void IIS3DWB::readFIFOData(uint16_t fifo_count, int16_t * dest0, int16_t * dest1
   dest1[ii] = (int16_t)(((int16_t)rawData[4] << 8)  | rawData[3]);
   dest2[ii] = (int16_t)(((int16_t)rawData[6] << 8)  | rawData[5]);
   }
+}
+*/
+
+__attribute__((optimize("O3"))) void IIS3DWB::readFIFOData(uint16_t fifo_count, int16_t * dest0, int16_t * dest1, int16_t * dest2)
+{
+  uint8_t rawData[8];  // tag register/tag/x/y/z accel register data stored here
+  SPI.beginTransaction(SPISettings(10000000, MSBFIRST, SPI_MODE0));
+  for(uint16_t ii = 0; ii < fifo_count; ii++)
+  {
+  rawData[0] = IIS3DWB_FIFO_DATA_OUT_TAG | 0x80;
+  digitalWrite(_cs, LOW);
+  SPI.transfer(rawData, 8);      // Read the 7 raw accel data registers into data array rawdata[1] - rawdata[7]
+  digitalWrite(_cs, HIGH);
+  
+  // Ignore tag data rawData[1]
+  dest0[ii] = (int16_t)(((int16_t)rawData[3] << 8)  | rawData[2]);  // Turn the MSB and LSB into a signed 16-bit value
+  dest1[ii] = (int16_t)(((int16_t)rawData[5] << 8)  | rawData[4]);
+  dest2[ii] = (int16_t)(((int16_t)rawData[7] << 8)  | rawData[6]);
+  }
+  
+  SPI.endTransaction();
 }
 
 
