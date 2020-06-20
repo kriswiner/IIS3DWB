@@ -7,7 +7,7 @@ flat frequency range. The wide bandwidth, low noise, very stable and repeatable 
 of operating over an extended temperature range (up to +105 °C), make the device particularly suitable for vibration 
 monitoring in industrial applications."
 
-The flat frequency range is 0.1 Hz to 6300 Hz (maximum bandwidth) with a 26667 Hz sample rate. The device has a large FIFO that can hold up to  3072 bytes of data, enough for 512 accelerometer data samples.
+The flat frequency range is 0.1 Hz to 6300 Hz (-3 dB bandwidth) with a 26667 Hz sample rate. The device has a large FIFO that can hold up to  3072 bytes of data, enough for 512 accelerometer data samples.
 
 ![breakout](https://user-images.githubusercontent.com/6698410/84727817-c078ca80-af44-11ea-98da-ecece12c1a06.jpg)
 *IIS3DWB breakout board sitting atop a Dragonfly STM32L476 development board via female machine pin headers.*
