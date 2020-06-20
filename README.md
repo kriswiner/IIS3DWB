@@ -20,6 +20,8 @@ Second sketch shows how to set up the FIFO, collect accel data in the FIFO, set 
 
 The SPI read of the 512 data samples from the FIFO takes about 13.1 ms and the fft for the full 512 data sample FIFO takes about 800 us at 80 MHz STM32L4 clock speed. The FIFO interframe time is ~20 ms (512 data samples/26667 Hz ~ 19.2 ms), so this is a rather longer read/processing time than we would like but still works. The SPI FIFO read time dominates here, and on the latest L4 core this time is reduced to ~8.6 ms through a number of improvements in the system layer.
 
+*Edit:* with some optimization, rearrangement, and use of internal SPI transfer functionality in the readFIFOData function call the SPI full (512 data samples) FIFO buffer read time was reduced to ~4.2 ms. So total time for FIFO read and fft is ~5 ms out of a IIS3DWB timing budget of 19.2 ms, which is a very nice place to be with lots of headroom. Further improvements will be possible when the new L4 core is released later in 2020.
+
 Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
 Breakout board [design](https://oshpark.com/shared_projects/KyNfc7rT) is open source in the shared space at OSH Park.
