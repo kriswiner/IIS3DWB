@@ -26,6 +26,12 @@ The SPI read of the 512 data samples from the FIFO takes about 13.1 ms and the f
 
 Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
+We made some more improvements to the sketch embodied in v.03 for themoment with which we tested the IIS3DWB against a hand-held Wahl Trimmer device. The IIS3DWB was mounted on top of the Dragonfly as shown above, and the Dragonfly was held by hand against the Wahl Trimmer. The 2048-bin FFT spectrum with the HPF filter set at 33 Hz (ODR/800, maximum bandwidth setting) is shown below for both trimmer on and off:
+
+![first_test results](https://user-images.githubusercontent.com/6698410/85237780-33b78c00-b3de-11ea-9d6c-0c1fe6a3c966.jpg)
+
+The Wahl trimmer specs list the cutting frequency at 14400 per minute which we take to mean 7200 (two cuts per) motor revolutions per minute or 120 Hz vibration frequency. The dominant peak is at 3 Hz (first, DC bin) for reasons we do not understand when using an HPF. The next-highest-intensity frequency is at 114 Hz (3% of the integrated intensity) with harmonics at 230, 341, and 686 Hz. There are somewhat weaker peaks at 58.5 Hz (60 Hz AC) 286 Hz and 796 Hz. The spectrum continues to tail off at higher frequencies (not shown). The zero vibration spectrum is essentially zero (orange line) on this scale. The total FFT time for 2048 bins is 4.0 ms, 5x (not the expected 4x) the 800 us for 512 bins. So not quite linear.
+
 Breakout board [design](https://oshpark.com/shared_projects/KyNfc7rT) is open source in the shared space at OSH Park.
 
 FFT analysis code modifications from CMSIS library were done by Greg Tomasch.
