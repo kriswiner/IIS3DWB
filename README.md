@@ -7,7 +7,7 @@ flat frequency range. The wide bandwidth, low noise, very stable and repeatable 
 of operating over an extended temperature range (up to +105 °C), make the device particularly suitable for vibration 
 monitoring in industrial applications."
 
-The flat frequency range is 0.1 Hz to 6300 Hz (-3 dB bandwidth) with a 26667 Hz sample rate. The device has a large FIFO that can hold up to  3072 bytes of data, enough for 512 accelerometer data samples.
+The flat frequency range is 0 Hz to 6300 Hz (-3 dB bandwidth) with a 26667 Hz sample rate. The device has a large FIFO that can hold up to  3072 bytes of data, enough for 512 accelerometer data samples.
 
 ![breakout](https://user-images.githubusercontent.com/6698410/84727817-c078ca80-af44-11ea-98da-ecece12c1a06.jpg)
 *IIS3DWB breakout board sitting atop a Dragonfly STM32L476 development board via female machine pin headers.*
@@ -22,7 +22,7 @@ We are reading the entire FIFO in one operation and subsequently constructing th
 
 Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
-We tested the IIS3DWB against a hand-held Wahl Trimmer device. The IIS3DWB was mounted on top of the Dragonfly as shown above, and the Dragonfly was held by hand against the Wahl Trimmer. The 2048-bin FFT spectrum with the HPF filter set at 33 Hz (ODR/800, maximum bandwidth setting) is shown below for both trimmer on and off:
+We tested the IIS3DWB against a hand-held Wahl Trimmer device. The IIS3DWB was mounted on top of the Dragonfly as shown above, and the Dragonfly was held by hand against the Wahl Trimmer. The 2048-bin FFT spectrum with the HPF filter set at 33 Hz (-3dB, ODR/800, maximum bandwidth setting) is shown below for both trimmer on and off:
 
 ![first_test results](https://user-images.githubusercontent.com/6698410/85237780-33b78c00-b3de-11ea-9d6c-0c1fe6a3c966.jpg)
 
