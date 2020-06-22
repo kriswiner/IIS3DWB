@@ -28,6 +28,10 @@ We tested the IIS3DWB against a hand-held Wahl Trimmer device. The IIS3DWB was m
 
 The Wahl trimmer specs list the cutting frequency at 14400 cuts per minute, which we take to mean 7200 (two cuts per) motor revolutions per minute or 120 Hz vibration frequency. The dominant peak is at 3 Hz (first, DC bin) for reasons we do not understand when using an HPF. The next-highest-intensity frequency is at 114 Hz (3% of the integrated intensity) with harmonics at 230, 341, and 686 Hz. There are somewhat weaker peaks at 58.5 Hz (60 Hz AC), 286 Hz and 796 Hz. The spectrum continues to tail off at higher frequencies (not shown). The zero vibration spectrum is essentially zero (orange line) on this scale. The total FFT time for 2048 bins is 4.0 ms, 5x (expected from Nlog2(N) dependence of FFT [operations](https://blog.endaq.com/vibration-analysis-fft-psd-and-spectrogram) on bin size) the 800 us for 512 bins.  
 
+As a further check, we repeated the same procedure against a WMT-220 [metronome](http://www.cherubtechnology.com/product/showproduct.php?lang=en&id=232) set to 440 Hz. The peak (ignoring the large DC peak again) comes in at 421.4 Hz with a harmonic at 833.6 Hz, so again about 5% lower than it should be. This could be due to a timing offset on the IIS3DWB which can be calibrated out to produce a better match to the data. But better to use a synthetic signal in the sketch as a way to check accuracy of the FFT algorithm before changing the effective sample rate on the sensor. To be continued...
+
+![440HzMetronome]()
+
 Breakout board [design](https://oshpark.com/shared_projects/KyNfc7rT) is open source in the shared space at OSH Park.
 
 FFT analysis code modifications from CMSIS library were done by Greg Tomasch.
