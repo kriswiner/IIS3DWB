@@ -18,7 +18,7 @@ The basic sketch shows how to configure the sensor, including setting up a data 
 
 Second sketch shows how to set up the FIFO, collect accel data in the FIFO, set up the FIFO watermark and FIFO-full (watermark) interrupt, and then batch read the FIFO into a buffer for further processing on the host. Further processing includes FFT and power spectrum peak identification, etc.
 
-We are reading the entire FIFO in one operation and subsequently constructing the data bytes rather than doing this all sequentially. FIFO buffer read time reduced further to ~3.1 ms. Theoretical read time should be (512 samples x 7 bytes/sample x 8 bits/byte)/10 MHz = 2.87 ms so we are above 93% efficiency with > 15 ms of headroom.
+We are reading the entire FIFO in one operation and subsequently constructing the data bytes rather than doing this all sequentially. Full (512 data samples) FIFO buffer read time is ~3.1 ms. Theoretical read time should be (512 samples x 7 bytes/sample x 8 bits/byte)/10 MHz = 2.87 ms so we are above 93% efficiency with > 15 ms of headroom.
 
 Next steps are to test the IIS3DWB against a known vibrational source for accuracy and, after that, add a PDM mic for an overlapping frequency range sensitivity between 100 Hz and 40 kHz. The challenge will be to maintain full data and fft throughput on both data streams without collisions.
 
