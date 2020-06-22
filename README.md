@@ -30,7 +30,7 @@ The Wahl trimmer specs list the cutting frequency at 14400 cuts per minute, whic
 
 As a further check, we repeated the same procedure against a WMT-220 [metronome](http://www.cherubtechnology.com/product/showproduct.php?lang=en&id=232) set to 440 Hz. The peak (ignoring the large DC peak again) comes in at 421.4 Hz with a harmonic at 833.6 Hz, so again about 5% lower than it should be. This could be due to a timing offset on the IIS3DWB which can be calibrated out to produce a better match to the data. But better to use a synthetic signal in the sketch as a way to check accuracy of the FFT algorithm before changing the effective sample rate on the sensor. To be continued...
 
-![440HzMetronome]()
+![440HzMetronome](https://user-images.githubusercontent.com/6698410/85246492-a2591180-b3ff-11ea-8d26-74e3dbe7ea09.jpg)
 
 Breakout board [design](https://oshpark.com/shared_projects/KyNfc7rT) is open source in the shared space at OSH Park.
 
