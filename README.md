@@ -38,6 +38,6 @@ FFT analysis code modifications from CMSIS library were done by Greg Tomasch.
 
 L4 system layer and Arduino core designed (and SPI FIFO read strategy) by Thomas Roell.
 
-Copyright for this work is owned by Tlera Corporation (2020) for use by anyone with proper attribution.
+Copyright 2020 Tlera Corporation. May be used by anyone with proper attribution.
  
 
