@@ -77,7 +77,7 @@ float32_t                    fft_output_buffer[FFT_LENGTH];                     
 float32_t                    psd_f32[FFT_LENGTH];                                                          // Scan-averaged complex magnitude PSD output buffer
 const arm_cfft_instance_f32* fft_Instance;                                                                 // CMSIS f32 CFFT instance pointer for the selected FFT length
 uint16_t                     fft_sample_count = 0;                                                         // Index to count the number of input samples in the fft I/O buffer                                                 
-float                        freq_bin_width = 2.0f * 6300.0f;                                              // FFT Frequency bin width in Hz
+float                        freq_bin_width   = 26667.0f/2.0f;                                             // FFT Frequency bin width in Hz
 float                        psd_max          = 0.0f;                                                      // PSD maximum for spectrum normalization
 volatile uint8_t             fft_data_ready   = 0;                                                         // Flag for when FFT raw data buffer is full and ready for analysis
 uint8_t                      psd_avg_count    = 0;                                                         // FFT scan counter for scan averaging
