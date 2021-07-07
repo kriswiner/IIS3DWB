@@ -10,7 +10,7 @@ monitoring in industrial applications."
 The flat frequency range is 0 Hz to 6300 Hz (-3 dB bandwidth) with a 26667 Hz sample rate. The device has a large FIFO that can hold up to  3072 bytes of data, enough for 512 accelerometer data samples.
 
 ![breakout](https://user-images.githubusercontent.com/6698410/84727817-c078ca80-af44-11ea-98da-ecece12c1a06.jpg)
-*IIS3DWB breakout board sitting atop a Dragonfly STM32L476 development board via female machine pin headers.*
+*IIS3DWB breakout board sitting atop a Dragonfly STM32L476 development board via female pin headers.*
  
 The sketch is intended to be run on a [Dragonfly](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) development board at 80 MHz. The sensor uses the SPI interface for full functionality and fast data transfer. Maximum SPI clock is 10 MHz, which the Dragonfly can support at its 80 MHz CPU clock speed.
 
