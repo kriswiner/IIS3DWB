@@ -101,7 +101,7 @@ void setup()
 
   // Configure SPI ship select for sensor breakout
   pinMode(CSPIN, OUTPUT);
-  pinMode(CSPIN, HIGH); // disable SPI at start
+  digitalWrite(CSPIN, HIGH); // disable SPI at start
  
   // Configure interrupt pins
   pinMode(IIS3DWB_intPin1, INPUT); // enable IIS3DWB interrupt1
